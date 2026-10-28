@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WaveDoc — benchmarks</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="lights">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="orb c"></div><div class="orb d"></div>
+</div>
+<div class="grain"></div>
+
+<nav class="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html">Wave<em>Doc</em></a>
+    <div class="nav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="models.html">Models</a>
+      <a href="compare.html">Benchmarks</a>
+    </div>
+    <div id="health" class="pill"><span class="spin"></span>connecting</div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section style="margin-top:26px;margin-bottom:22px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;
+                gap:20px;flex-wrap:wrap">
+      <div>
+        <h1 style="max-width:19ch">Measured against the state of the art</h1>
+        <p class="sub" style="margin-top:12px;max-width:58ch">
+          Same metric, same public benchmark, same held-out split as the paper
+          being compared with. Nothing is re-scored on a friendlier measure.
+        </p>
+      </div>
+      <div id="tally" class="pill ok" style="font-size:14px;padding:11px 20px">
+        <span class="spin"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="glass">
+    <div class="step">HEAD TO HEAD</div>
+    <canvas id="chart" style="width:100%;height:360px;display:block"></canvas>
+    <div class="legend">
+      <span><i style="background:rgba(255,255,255,.3)"></i>Published baseline</span>
+      <span><i style="background:linear-gradient(90deg,#5AC8FA,#A78BFA)"></i>WaveDoc</span>
+    </div>
+  </section>
+
+  <section class="glass mt">
+    <div class="step">RESULTS TABLE</div>
+    <div style="overflow-x:auto">
+      <table id="table"></table>
+    </div>
+  </section>
+
+  <section class="glass mt">
+    <div class="step">COMPONENT ABLATION — MIT-BIH</div>
+    <p class="hint" style="margin:0 0 16px">
+      Five variants trained under identical conditions. Macro F1 is the primary
+      metric: accuracy saturates because 68% of beats in this benchmark are normal.
+    </p>
+    <div style="overflow-x:auto">
+      <table id="ablation"></table>
+    </div>
+  </section>
+
+  <section class="glass mt">
+    <div class="step">DECOHERENCE GRADIENT ACROSS MODALITIES</div>
+    <p class="hint" style="margin:0 0 18px">
+      γ is initialised uniformly at 0.5 and optimised only by backpropagation.
+      It converges to a falling gradient in every modality — the profile measured
+      in the FMO photosynthetic complex.
+    </p>
+    <div id="gammas" class="row c4"></div>
+  </section>
+
+  <footer>
+    <div>
+      <strong style="color:var(--text-2)">WaveDoc</strong> ·
+      Phase-coherent diagnosis across bioelectric signals
+    </div>
+    <div>
+      Group 26 · Artificial Intelligence &amp; Machine Learning<br>
+      Acharya Institute of Technology
+    </div>
+  </footer>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/compare.js"></script>
+</body>
+</html>

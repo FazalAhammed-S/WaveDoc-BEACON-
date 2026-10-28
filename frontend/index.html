@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WaveDoc — live diagnosis</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="lights">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="orb c"></div><div class="orb d"></div>
+</div>
+<div class="grain"></div>
+
+<nav class="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html">Wave<em>Doc</em></a>
+    <div class="nav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="models.html">Models</a>
+      <a href="compare.html">Benchmarks</a>
+    </div>
+    <div id="health" class="pill"><span class="spin"></span>connecting</div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ── live monitor ─────────────────────────────────── -->
+  <section class="glass" style="margin-top:22px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;
+                gap:20px;flex-wrap:wrap;margin-bottom:18px">
+      <div>
+        <h1 style="max-width:20ch">Read the phase, not just the peak</h1>
+        <p class="sub" style="margin-top:12px;max-width:56ch">
+          Every clinical AI keeps the amplitude of a signal and throws the timing
+          away. WaveDoc keeps both — and finds disease in what the others discard.
+        </p>
+      </div>
+      <div style="text-align:right">
+        <div class="pill ok"><span class="dot live"></span>monitor live</div>
+        <div id="bpm" class="bpm" style="margin-top:14px">—<small>bpm</small></div>
+      </div>
+    </div>
+
+    <div class="monitor" style="height:210px">
+      <canvas id="live"></canvas>
+      <div class="hud">
+        <span id="live-label">synthetic reference trace</span>
+        <span id="live-rate">360 Hz</span>
+      </div>
+    </div>
+    <p class="hint">
+      The trace scrolls in real time. Draw a sample below and this display
+      switches to that recording.
+    </p>
+  </section>
+
+  <!-- ── step 1: signal type ──────────────────────────── -->
+  <section class="glass mt">
+    <div class="step">1 — SIGNAL TYPE</div>
+    <select id="model-select" class="field"></select>
+    <div class="specs mt">
+      <div class="spec"><div class="k">SHAPE</div><div class="v" id="sp-shape">—</div></div>
+      <div class="spec"><div class="k">CHANNELS</div><div class="v" id="sp-chan">—</div></div>
+      <div class="spec"><div class="k">SAMPLING</div><div class="v" id="sp-rate">—</div></div>
+      <div class="spec"><div class="k">DURATION</div><div class="v" id="sp-dur">—</div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;
+                gap:14px;margin-top:14px;flex-wrap:wrap">
+      <p class="hint" id="model-note" style="margin:0;flex:1;min-width:240px"></p>
+      <a id="model-link" class="btn" href="models.html">Model details</a>
+    </div>
+  </section>
+
+  <!-- ── step 2: sample ───────────────────────────────── -->
+  <section class="glass mt">
+    <div class="step">2 — PROVIDE A SAMPLE</div>
+    <div class="btn-row" style="margin-bottom:14px">
+      <button id="btn-random" class="btn primary">
+        <span>Draw random sample</span>
+      </button>
+      <div id="class-chips" class="chips"></div>
+    </div>
+
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept=".csv,.txt,.npy">
+      <div class="big">Or drop a recording here</div>
+      <div class="hint" id="drop-hint" style="margin:0">
+        csv, txt or npy
+      </div>
+    </label>
+  </section>
+
+  <!-- ── results ──────────────────────────────────────── -->
+  <div id="result"></div>
+
+  <footer>
+    <div>
+      <strong style="color:var(--text-2)">WaveDoc</strong> ·
+      Phase-coherent diagnosis across bioelectric signals
+    </div>
+    <div>
+      Group 26 · Artificial Intelligence &amp; Machine Learning<br>
+      Acharya Institute of Technology
+    </div>
+  </footer>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

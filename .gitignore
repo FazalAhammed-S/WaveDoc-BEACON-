@@ -1,0 +1,16 @@
+# model weights and datasets are large — keep them out of git
+weights/*
+data/*
+!weights/.gitkeep
+!data/.gitkeep
+*.pt
+*.pth
+*.npy
+*.npz
+*.zip
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+.DS_Store
+wandb/
